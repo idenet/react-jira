@@ -18,13 +18,13 @@ export const ProjectListScreen = () => {
   const [list, setList] = useState([]);
 
   useEffect(() => {
-    fetch(`${apiUrl}/projects?${qs.stringify(cleanObject(param))}`).then(
-      async (response) => {
-        if (response.ok) {
-          setList(await response.json());
-        }
+    fetch(
+      `${apiUrl}/projects?${qs.stringify(cleanObject(deblunceValue))}`
+    ).then(async (response) => {
+      if (response.ok) {
+        setList(await response.json());
       }
-    );
+    });
   }, [deblunceValue]);
   useMount(() => {
     fetch(`${apiUrl}/users`).then(async (response) => {
